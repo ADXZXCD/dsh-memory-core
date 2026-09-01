@@ -1,0 +1,14 @@
+{
+  "name": "dsh-memory-core",
+  "version": "0.1.0",
+  "description": "Portable routing, audit, and regression primitives for layered DSH memory.",
+  "type": "module",
+  "bin": { "dsh-memory": "./bin/dsh-memory.mjs" },
+  "scripts": {
+    "check": "node --check src/index.mjs && node --check bin/dsh-memory.mjs",
+    "test": "node --test",
+    "audit": "node ./bin/dsh-memory.mjs audit --home ./fixtures/sample-home --strict"
+  },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
