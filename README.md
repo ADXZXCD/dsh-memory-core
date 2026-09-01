@@ -36,6 +36,16 @@ DSH 记忆通常分为 Runtime Memory、Topic、Workspace Memory、Skill 和长�
 - 检查 Topic 的状态和作用域元数据。
 - 检查 Skill frontmatter、重复名称和重复内容。
 
+### Skill 内容审计
+
+`dsh-skill-audit` 扫描指定 Skill 根目录下的全部 `SKILL.md`，把行为边界冲突列为错误，把过长行列为警告，不读取或输出凭据内容：
+
+```bash
+node ./bin/dsh-skill-audit.mjs --skills /path/to/skills --strict --json
+```
+
+它会检查英文决策栏目、跨任务授权、固定行数汇报、旧 Cordis 工具名、不安全权限建议、无边界扫描、流程顺序冲突和重复自检。`--strict` 只因错误退出非零，长行警告不会阻断安全审查。
+
 ### 技能进化候选
 
 候选流程是只暂存、不自动升级：
@@ -148,4 +158,4 @@ npm test
 npm pack --dry-run
 ```
 
-当前版本：`0.2.0`。该版本属于早期兼容版本，宿主集成应自行验证 DSH 版本、Workspace 绑定方式和 Provider 能力。
+当前版本：`0.3.0`。该版本增加 Skill 内容审计命令；宿主集成仍应自行验证 DSH 版本、Workspace 绑定方式和 Provider 能力。

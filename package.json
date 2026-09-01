@@ -1,11 +1,11 @@
 {
   "name": "dsh-memory-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Portable routing, audit, and regression primitives for layered DSH memory.",
   "type": "module",
-  "bin": { "dsh-memory": "./bin/dsh-memory.mjs", "dsh-memory-evolution": "./bin/dsh-memory-evolution.mjs" },
+  "bin": { "dsh-memory": "./bin/dsh-memory.mjs", "dsh-memory-evolution": "./bin/dsh-memory-evolution.mjs", "dsh-skill-audit": "./bin/dsh-skill-audit.mjs" },
   "scripts": {
-    "check": "node --check src/index.mjs && node --check src/evolution.mjs && node --check bin/dsh-memory.mjs && node --check bin/dsh-memory-evolution.mjs",
+    "check": "node --check src/index.mjs && node --check src/evolution.mjs && node --check src/skill-content-audit.mjs && node --check bin/dsh-memory.mjs && node --check bin/dsh-memory-evolution.mjs && node --check bin/dsh-skill-audit.mjs",
     "test": "node --test",
     "audit": "node ./bin/dsh-memory.mjs audit --home ./fixtures/sample-home --strict"
   },
