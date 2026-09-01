@@ -6,9 +6,12 @@ Portable, read-only-first primitives for layered DSH memory:
 - private-path suppression;
 - index target and trigger validation;
 - Topic metadata checks;
+- staged global skill-evolution candidates;
 - deterministic Node.js regression tests.
 
-This repository contains no user memory, credentials, deployment paths, or DSH production configuration. It does not install schedules or write memory by default.
+The evolution pipeline records sanitized candidates only. Formal Topics, Runtime Memory, and Skills require a host-side user-confirmation flow; the core package never promotes a candidate silently.
+
+This repository contains no user memory, credentials, deployment paths, or DSH production configuration.
 
 ## Usage
 
@@ -16,11 +19,8 @@ This repository contains no user memory, credentials, deployment paths, or DSH p
 npm test
 npm run check
 node ./bin/dsh-memory.mjs route "custom topic" --home ./fixtures/sample-home
-node ./bin/dsh-memory.mjs audit --home ./fixtures/sample-home --strict
+DSH_MEMORY_HOME=/path/to/memory node ./bin/dsh-memory-evolution.mjs audit --strict
+DSH_MEMORY_HOME=/path/to/memory node ./bin/dsh-memory-evolution.mjs question
 ```
 
-Set `DSH_MEMORY_HOME` instead of `--home` when integrating with a DSH deployment. A host integration should pass the exact workspace path explicitly; do not infer it from the current directory.
-
-## Scope
-
-The core package owns parsing, routing, validation, and tests. Skill instructions, Provider adapters, and external GitHub writes are separate packages.
+The core package owns parsing, candidate validation, routing, and tests. Skill instructions, Provider adapters, and external GitHub writes are separate packages.
